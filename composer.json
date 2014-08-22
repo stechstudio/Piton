@@ -1,15 +1,21 @@
 {
-    "name": "STS/Logging",
+    "name": "STS/Piton",
+    "type": "library",
     "description": "PSR-3 Compatible Splunk Storm Logging",
+    "keywords": ["log","logging","splunk","splunkstorm","psr-3","logger"],
+    "homepage": "https://github.com/stechstudio/Piton",
     "minimum-stability": "stable",
-    "license": "proprietary",
+    "license": "MIT",
     "authors": [
         {
             "name": "Bubba Hines",
-            "email": "Bubba@StechStudio.com"
+            "email": "Bubba@StechStudio.com",
+            "role": "Developer",
+            "homepage": "https://plus.google.com/+BubbaHines/about"
         }
     ],
     "require": {
+        "php": ">=5.4.0",
         "guzzlehttp/guzzle": "4.0.0",
         "psr/log": "1.0.0"
     },
@@ -20,6 +26,8 @@
         "satooshi/php-coveralls": "dev-master"
     },
     "autoload": {
-        "psr-0": {"Piton\\": "src/"}
+        "psr-0": {
+            "Piton": "src"
+        }
     }
 }
