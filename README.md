@@ -10,7 +10,9 @@ We also happen to think highly of the PSR standards, and desire to meet them whe
 ## Build
 ### Status
 Master: [![Build Status](https://travis-ci.org/stechstudio/Piton.svg?branch=master)](https://travis-ci.org/stechstudio/Piton)
+
 ### Code Coverage
+Master: [![Coverage Status](https://coveralls.io/repos/stechstudio/Piton/badge.png?branch=master)](https://coveralls.io/r/stechstudio/Piton?branch=master)
 
 ## Installation
 For now, simply clone the repo and run composer. Our goal is to get it into composer in the near future.
