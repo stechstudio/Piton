@@ -1,5 +1,5 @@
 {
-    "name": "stechstudio/Piton",
+    "name": "stechstudio/piton",
     "type": "library",
     "description": "PSR-3 Compatible Splunk Storm Logging",
     "keywords": ["log","logging","splunk","splunkstorm","psr-3","logger"],
