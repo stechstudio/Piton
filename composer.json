@@ -1,0 +1,24 @@
+{
+    "name": "STS/Logging",
+    "description": "PSR-3 Compatible Splunk Storm Logging",
+    "minimum-stability": "stable",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Bubba Hines",
+            "email": "Bubba@StechStudio.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "4.0.0",
+        "psr/log": "1.0.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.2.*",
+        "phpdocumentor/phpdocumentor": "v2.7.0",
+        "evert/phpdoc-md": "0.0.*"
+    },
+    "autoload": {
+        "psr-0": {"Piton\\": "src/"}
+    }
+}
