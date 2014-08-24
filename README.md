@@ -9,8 +9,8 @@ We also happen to think highly of the [PHP FIG](http://www.php-fig.org/) standar
 
 |   | <h3>Build Status</h3> | <h3>Code Coverage</h3> |
 :-------- | ------------: | -------------:
-<h3>Master</h3> | [![Build Status](https://travis-ci.org/stechstudio/Piton.svg?branch=master)](https://travis-ci.org/stechstudio/Piton) | [![Coverage Status](https://coveralls.io/repos/stechstudio/Piton/badge.png?branch=master)](https://coveralls.io/r/stechstudio/Piton?branch=master)
-<h3>Develop</h3> | [![Build Status](https://travis-ci.org/stechstudio/Piton.svg?branch=develop)](https://travis-ci.org/stechstudio/Piton) | [![Coverage Status](https://coveralls.io/repos/stechstudio/Piton/badge.png?branch=develop)](https://coveralls.io/r/stechstudio/Piton?branch=develop)
+<strong>Master</strong> | [![Build Status](https://travis-ci.org/stechstudio/Piton.svg?branch=master)](https://travis-ci.org/stechstudio/Piton) | [![Coverage Status](https://coveralls.io/repos/stechstudio/Piton/badge.png?branch=master)](https://coveralls.io/r/stechstudio/Piton?branch=master)
+<strong>Develop</strong> | [![Build Status](https://travis-ci.org/stechstudio/Piton.svg?branch=develop)](https://travis-ci.org/stechstudio/Piton) | [![Coverage Status](https://coveralls.io/repos/stechstudio/Piton/badge.png?branch=develop)](https://coveralls.io/r/stechstudio/Piton?branch=develop)
 
 ## Installation / Usage
 1. Download the [`composer.phar`](https://getcomposer.org/composer.phar) executable or use the installer.
