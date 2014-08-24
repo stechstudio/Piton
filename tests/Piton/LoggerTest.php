@@ -122,6 +122,18 @@ class LoggerTest extends \PHPUnit_Framework_TestCase
         $this->logger->removeAppender([]);
     }
 
+    public function testSetTimezoneId(){
+        $this->logger->setTimezoneId('Europe/London');
+        $this->assertEquals(new \DateTimeZone('Europe/London'), $this->logger->getTimezone());
+        $this->setExpectedException('Piton\Exceptions\InvalidArgumentException');
+        $this->logger->setTimezoneId('Europa/HinesHill');
+    }
+
+    public function testSetBadTimezoneId(){
+        $this->setExpectedException('Piton\Exceptions\InvalidArgumentException');
+        $this->logger->setTimezoneId([]);
+    }
+
     public function testTimestamp()
     {
         $this->assertFalse($this->logger->usesTimeStamp());
@@ -135,7 +147,7 @@ class LoggerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('D M j G:i:s.u Y', $this->logger->getTimestampFormat());
         $this->logger->setTimestampFormat('D M j G:i:s.u T Y');
         $this->assertTrue(
-            date_create_from_format('D M j G:i:s.u T Y', $this->logger->createTimeStamp()) instanceof \DateTime
+            date_create_from_format('D M j G:i:s.u T Y', $this->logger->createTimeStamp(), $this->logger->getTimezone()) instanceof \DateTime
         );
         $this->setExpectedException('Piton\Exceptions\InvalidArgumentException');
         $this->logger->setTimestampFormat([]);
