@@ -7,7 +7,7 @@ However, we did desire the ability to capture the logs on SplunkStorm. Because t
 
 We also happen to think highly of the [PHP FIG](http://www.php-fig.org/) standards, and desire to meet them where possible. After writing the logger for ourselves, we decided others might want to leverage it to, and are releasing it into the wild.
 
-|   | <h3>Build Status</h3> | <h3>Code Coverage</h3> |
+|   | <strong>Build Status</strong> | <strong>Code Coverage</strong> |
 :-------- | ------------: | -------------:
 <strong>Master</strong> | [![Build Status](https://travis-ci.org/stechstudio/Piton.svg?branch=master)](https://travis-ci.org/stechstudio/Piton) | [![Coverage Status](https://coveralls.io/repos/stechstudio/Piton/badge.png?branch=master)](https://coveralls.io/r/stechstudio/Piton?branch=master)
 <strong>Develop</strong> | [![Build Status](https://travis-ci.org/stechstudio/Piton.svg?branch=develop)](https://travis-ci.org/stechstudio/Piton) | [![Coverage Status](https://coveralls.io/repos/stechstudio/Piton/badge.png?branch=develop)](https://coveralls.io/r/stechstudio/Piton?branch=develop)
