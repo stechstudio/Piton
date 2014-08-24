@@ -1,11 +1,11 @@
 # PITON
-## _The PSR-3 Compliant SplunkStorm Logger for PHP_
+## _The [PSR-3](http://www.php-fig.org/psr/psr-3/) Compliant [SplunkStorm](http://docs.splunk.com/Documentation/Storm/latest/User/AboutSplunkStorm) Logger for PHP_
 
-Piton was developed in order to allow simple access to the SplunkStorm API from PHP code. While we use the SplunkStorm log shippers for the majority of our applications, we ran into cases of short lived tasks, running on short lived EC2 instances, that didn't warrant setting up log shipping.
+Piton was developed in order to allow simple access to the [SplunkStorm REST API](http://docs.splunk.com/Documentation/Storm/Storm/User/UseStormsRESTAPI) from PHP code. While we use the [SplunkStorm](http://docs.splunk.com/Documentation/Storm/latest/User/AboutSplunkStorm) log shippers for the majority of our applications, we ran into cases of short lived tasks, running on short lived EC2 instances, that didn't warrant setting up log shipping.
 
-However, we did desire the ability to capture the logs on SplunkStorm. Because the majority of our tasks run on IronWorker and are CLI based, we also desired the ability to log to the console. Thus, our logger ships with a console as well as a splunk appender.
+However, we did desire the ability to capture the logs on SplunkStorm. Because the majority of these tasks run on [Iron.io's](http://www.iron.io) [IronWorker](http://www.iron.io/worker) and are CLI based, we also desired the ability to log to the console. Thus, our logger ships with console and splunk appenders.
 
-We also happen to think highly of the PSR standards, and desire to meet them where possible. After writing the logger for ourselves, we decided others might want to leverage it to, and are releasing it into the wild.
+We also happen to think highly of the [PHP FIG](http://www.php-fig.org/) standards, and desire to meet them where possible. After writing the logger for ourselves, we decided others might want to leverage it to, and are releasing it into the wild.
 
 ## Build
 ### Status
