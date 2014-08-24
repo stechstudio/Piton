@@ -16,14 +16,36 @@ Develop: [![Build Status](https://travis-ci.org/stechstudio/Piton.svg?branch=dev
 Master: [![Coverage Status](https://coveralls.io/repos/stechstudio/Piton/badge.png?branch=master)](https://coveralls.io/r/stechstudio/Piton?branch=master)
 Develop: [![Coverage Status](https://coveralls.io/repos/stechstudio/Piton/badge.png?branch=develop)](https://coveralls.io/r/stechstudio/Piton?branch=develop)
 
-## Installation
-For now, simply clone the repo and run composer. Our goal is to get it into composer in the near future.
+Installation / Usage
+--------------------
+
+1. Download the [`composer.phar`](https://getcomposer.org/composer.phar) executable or use the installer.
+
+    ``` sh
+    $ curl -sS https://getcomposer.org/installer | php
+    ```
+
+2. Create a composer.json defining your dependencies. Note that this example is
+a short version for applications that are not meant to be published as packages
+themselves. To create libraries/packages please read the
+[documentation](http://getcomposer.org/doc/02-libraries.md).
+
+    ``` json
+    {
+        "require": {
+            "stechstudio/piton": ">=0.1.1"
+        }
+    }
+    ```
+
+3. Run Composer: `php composer.phar install`
+4. Browse for more packages on [Packagist](https://packagist.org).
 
 ## Documentations
-Check out the docs/api directory.
+Check out the [docs/api directory](https://github.com/stechstudio/Piton/tree/master/docs/api).
 
 ## Examples
-Check out the examples directory.
+Check out the [examples directory](https://github.com/stechstudio/Piton/tree/master/examples).
 
 ## Quickstart
 You will need a SplunkStorm Project API Hostname, Project ID, and Access Token. You can find them in the data section of your SplunkStorm Project. Select _Data_, the _API_, and you will find everything you need.
