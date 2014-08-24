@@ -1,5 +1,6 @@
 # PITON
 ## _The [PSR-3](http://www.php-fig.org/psr/psr-3/) Compliant [SplunkStorm](http://docs.splunk.com/Documentation/Storm/latest/User/AboutSplunkStorm) Logger for PHP_
+[![Latest Stable Version](https://poser.pugx.org/stechstudio/piton/v/stable.svg)](https://packagist.org/packages/stechstudio/piton) [![Total Downloads](https://poser.pugx.org/stechstudio/piton/downloads.svg)](https://packagist.org/packages/stechstudio/piton) [![Latest Unstable Version](https://poser.pugx.org/stechstudio/piton/v/unstable.svg)](https://packagist.org/packages/stechstudio/piton) [![License](https://poser.pugx.org/stechstudio/piton/license.svg)](https://packagist.org/packages/stechstudio/piton)
 
 Piton was developed in order to allow simple access to the [SplunkStorm REST API](http://docs.splunk.com/Documentation/Storm/Storm/User/UseStormsRESTAPI) from PHP code. While we use the [SplunkStorm](http://docs.splunk.com/Documentation/Storm/latest/User/AboutSplunkStorm) log shippers for the majority of our applications, we ran into cases of short lived tasks, running on short lived EC2 instances, that didn't warrant setting up log shipping.
 
