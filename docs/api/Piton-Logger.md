@@ -63,7 +63,7 @@ Config for a default console Appender
 ### $useTimestamp
 
 ```
-protected boolean $useTimestamp = true
+protected boolean $useTimestamp = false
 ```
 
 Whether our log message should be prepended with a timestamp
@@ -149,6 +149,33 @@ Appenders linked to this logger
 
 
 * Visibility: **private**
+
+
+### $timezoneId
+
+```
+protected string $timezoneId = 'UTC'
+```
+
+Timezone Identifier for out log timestamps. Defaults to UTC, and really,
+truly, should never be modified! Thus saith Bubba!
+
+
+
+* Visibility: **protected**
+
+
+### $contextualizeMessage
+
+```
+public boolean $contextualizeMessage = false
+```
+
+Determines whether to move the message into the context or not
+
+
+
+* Visibility: **public**
 
 
 Methods
@@ -510,6 +537,38 @@ Set the current log level
 #### Arguments
 
 * $level **mixed**
+
+
+
+### \Piton\Logger::setTimezoneId()
+
+```
+mixed Piton\Logger::\Piton\Logger::setTimezoneId()($timezoneId)
+```
+
+
+
+
+
+* Visibility: **public**
+
+#### Arguments
+
+* $timezoneId **mixed**
+
+
+
+### \Piton\Logger::getTimezone()
+
+```
+mixed Piton\Logger::\Piton\Logger::getTimezone()()
+```
+
+
+
+
+
+* Visibility: **public**
 
 
 
