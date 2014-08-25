@@ -19,7 +19,7 @@
 namespace Piton\Appender;
 
 
-use \Piton\Common\Abstracts\Appender;
+use Piton\Common\Abstracts\Appender;
 
 /**
  * Simply NULL Appender, mostly used for stubbing out logging.

@@ -370,7 +370,7 @@ class Logger extends Abstracts\Logger
             if (!$level->isLessThanOrEqual($this->getLevel())) {
                 return null;
             }
-
+            $origMessage = '';
             if ($this->contextualizeMessage) {
                 $origMessage = $message;
                 $message = '';

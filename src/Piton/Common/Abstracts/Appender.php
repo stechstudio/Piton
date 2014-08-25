@@ -19,8 +19,8 @@
 namespace Piton\Common\Abstracts;
 
 use Piton\Common\Interfaces;
-use Piton\Exceptions\InvalidArgumentException;
 use Piton\Exceptions;
+use Piton\Exceptions\InvalidArgumentException;
 
 /**
  * Class Appender helps our appender code use.
