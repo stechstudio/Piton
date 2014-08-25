@@ -84,6 +84,13 @@ class Logger extends Abstracts\Logger
     private $appenders = array();
 
     /**
+     * Timezone Identifier for out log timestamps. Defaults to UTC, and really,
+     * truly, should never be modified! Thus saith Bubba!
+     * @var string
+     */
+    protected $timezoneId = 'UTC';
+
+    /**
      * The constructor, it takes an array of configuration information. And example
      * of instantiating three appenders might look like:
      *
@@ -166,7 +173,9 @@ class Logger extends Abstracts\Logger
             }
 
             if (!class_exists($config['class'])) {
-                throw new InvalidArgumentException("The class {$config['class']} hasn't been defined. Check your spelling, include paths, or autoloading.");
+                throw new InvalidArgumentException(
+                    "The class {$config['class']} hasn't been defined. Check your spelling, include paths, or autoloading."
+                );
             }
 
             if (array_key_exists('target', $config)) {
@@ -213,14 +222,16 @@ class Logger extends Abstracts\Logger
      */
     public static function defaultConsoleFactory()
     {
-        return new self([
-            'appenders' => [
-                'console' => [
-                    'target' => 'stdout',
-                    'class' => 'Piton\Appender\Console'
+        return new self(
+            [
+                'appenders' => [
+                    'console' => [
+                        'target' => 'stdout',
+                        'class' => 'Piton\Appender\Console'
+                    ]
                 ]
             ]
-        ]);
+        );
     }
 
     /**
@@ -359,16 +370,16 @@ class Logger extends Abstracts\Logger
             if (!$level->isLessThanOrEqual($this->getLevel())) {
                 return null;
             }
-
-            if ($this->contextualizeMessage){
+            $origMessage = '';
+            if ($this->contextualizeMessage) {
                 $origMessage = $message;
                 $message = '';
             }
             $appenderMessage = $this->formatMessage($message);
             $appenderContext = $this->mergeContexts($context);
             $appenderContext['LOGLEVEL'] = $level->toString();
-            $appenderContext['TIMESTAMP'] =$this->createTimeStamp();
-            if ($this->contextualizeMessage){
+            $appenderContext['TIMESTAMP'] = $this->createTimeStamp();
+            if ($this->contextualizeMessage) {
                 $appenderContext['MESSAGE'] = $origMessage;
             }
             foreach ($this->appenders as $appender) {
@@ -409,13 +420,31 @@ class Logger extends Abstracts\Logger
         throw new InvalidArgumentException('You must provide a valid LoggerLevel argument.');
     }
 
+    public function setTimezoneId($timezoneId)
+    {
+        if (!is_string($timezoneId)) {
+            throw new InvalidArgumentException("You must pass a string type timezone identifier.");
+        }
+
+        if (!in_array($timezoneId, \timezone_identifiers_list())) {
+            throw new InvalidArgumentException("[$timezoneId] is not a valid TimeZone Identifier.");
+        }
+        $this->timezoneId = $timezoneId;
+    }
+
+    public function getTimezone()
+    {
+        return new \DateTimeZone($this->timezoneId);
+    }
+
     /**
      * Get a nice timestamp, with microseconds
      * @return string
      */
     public function createTimeStamp()
     {
-        $dateTime = date_create_from_format('U.u', sprintf('%.f', microtime(true)));
+        // @todo setup timezone for logs
+        $dateTime = date_create_from_format('U.u', sprintf('%.f', microtime(true)), $this->getTimezone());
         return $dateTime->format($this->getTimestampFormat());
     }
 

@@ -20,9 +20,9 @@ namespace Piton\Appender;
 
 use GuzzleHttp\Client as gzClient;
 use GuzzleHttp\Exception\RequestException;
-use SebastianBergmann\Exporter\Exception;
 use Piton\Common\Abstracts\Appender;
 use Piton\Exceptions\InvalidArgumentException;
+use SebastianBergmann\Exporter\Exception;
 
 /**
  * This is where the magic happens! We use this class to actually
