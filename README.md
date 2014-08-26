@@ -1,28 +1,6 @@
 # PITON
 ## _The [PSR-3](http://www.php-fig.org/psr/psr-3/) Compliant [SplunkStorm](http://docs.splunk.com/Documentation/Storm/latest/User/AboutSplunkStorm) Logger for PHP_
-<p style="text-align: center;">[![Latest Stable Version](https://poser.pugx.org/stechstudio/piton/v/stable.svg)](https://packagist.org/packages/stechstudio/piton) [![Total Downloads](https://poser.pugx.org/stechstudio/piton/downloads.svg)](https://packagist.org/packages/stechstudio/piton) [![Latest Unstable Version](https://poser.pugx.org/stechstudio/piton/v/unstable.svg)](https://packagist.org/packages/stechstudio/piton) [![License](https://poser.pugx.org/stechstudio/piton/license.svg)](https://packagist.org/packages/stechstudio/piton)</p>
-
-<table style="width: 336px; margin: 30px auto;">
-    <thead>
-        <tr>
-            <td></td>
-            <th>Build Status</th>
-            <th>Code Coverage</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th>Master</th>
-            <td align="center"><a href="https://travis-ci.org/stechstudio/Piton"><img alt="Build Status" src="https://travis-ci.org/stechstudio/Piton.svg?branch=master"></a></td>
-            <td align="center"><a href="https://coveralls.io/r/stechstudio/Piton?branch=master"><img alt="Coverage Status" src="https://coveralls.io/repos/stechstudio/Piton/badge.png?branch=master"></a></td>
-        </tr>
-        <tr>
-            <th>Develop</th>
-            <td align="center"><a href="https://travis-ci.org/stechstudio/Piton"><img alt="Build Status" src="https://travis-ci.org/stechstudio/Piton.svg?branch=develop"></a></td>
-            <td align="center"><a href="https://coveralls.io/r/stechstudio/Piton?branch=develop"><img alt="Coverage Status" src="https://coveralls.io/repos/stechstudio/Piton/badge.png?branch=develop"></a></td>
-        </tr>
-    </tbody>
-</table>
+[![Latest Stable Version](https://poser.pugx.org/stechstudio/piton/v/stable.svg)](https://packagist.org/packages/stechstudio/piton) [![Total Downloads](https://poser.pugx.org/stechstudio/piton/downloads.svg)](https://packagist.org/packages/stechstudio/piton) [![Latest Unstable Version](https://poser.pugx.org/stechstudio/piton/v/unstable.svg)](https://packagist.org/packages/stechstudio/piton) [![License](https://poser.pugx.org/stechstudio/piton/license.svg)](https://packagist.org/packages/stechstudio/piton)
 
 Piton was developed in order to allow simple access to the [SplunkStorm REST API](http://docs.splunk.com/Documentation/Storm/Storm/User/UseStormsRESTAPI) from PHP code. While we use the [SplunkStorm](http://docs.splunk.com/Documentation/Storm/latest/User/AboutSplunkStorm) log shippers for the majority of our applications, we ran into cases of short lived tasks, running on short lived EC2 instances, that didn't warrant setting up log shipping.
 
@@ -30,6 +8,10 @@ However, we did desire the ability to capture the logs on SplunkStorm. Because t
 
 We also happen to think highly of the [PHP FIG](http://www.php-fig.org/) standards, and desire to meet them where possible. After writing the logger for ourselves, we decided others might want to leverage it to, and are releasing it into the wild.
 
+|   | <strong>Build Status</strong> | <strong>Code Coverage</strong> |
+:-------- | ------------: | -------------:
+<strong>Master</strong> | [![Build Status](https://travis-ci.org/stechstudio/Piton.svg?branch=master)](https://travis-ci.org/stechstudio/Piton) | [![Coverage Status](https://coveralls.io/repos/stechstudio/Piton/badge.png?branch=master)](https://coveralls.io/r/stechstudio/Piton?branch=master)
+<strong>Develop</strong> | [![Build Status](https://travis-ci.org/stechstudio/Piton.svg?branch=develop)](https://travis-ci.org/stechstudio/Piton) | [![Coverage Status](https://coveralls.io/repos/stechstudio/Piton/badge.png?branch=develop)](https://coveralls.io/r/stechstudio/Piton?branch=develop)
 
 ## Installation / Usage
 1. Download the [`composer.phar`](https://getcomposer.org/composer.phar) executable or use the installer.
