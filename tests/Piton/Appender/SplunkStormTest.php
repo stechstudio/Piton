@@ -42,7 +42,7 @@ class SplunkStormTest extends \PHPUnit_Framework_TestCase {
 
     public function testAppendThrowsException(){
         // Set the expectation of the exception
-        $this->setExpectedException('SebastianBergmann\Exporter\Exception');
+        $this->setExpectedException('ErrorException');
         $this->appender->append('PHPUNIT Test', []);
     }
 

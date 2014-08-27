@@ -8,3 +8,4 @@ docs/_build
 docs/*.pyc
 .idea
 .DS_STORE
+README.html

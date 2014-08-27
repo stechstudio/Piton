@@ -22,7 +22,6 @@ use GuzzleHttp\Client as gzClient;
 use GuzzleHttp\Exception\RequestException;
 use Piton\Common\Abstracts\Appender;
 use Piton\Exceptions\InvalidArgumentException;
-use SebastianBergmann\Exporter\Exception;
 
 /**
  * This is where the magic happens! We use this class to actually
@@ -163,7 +162,7 @@ class SplunkStorm extends Appender
      *
      * @param string $message
      * @param array $context
-     * @throws \SebastianBergmann\Exporter\Exception
+     * @throws \ErrorException
      * @internal param \Piton\Common\LoggerLevel $level
      * @internal param $event
      * @return mixed|void
@@ -186,7 +185,7 @@ class SplunkStorm extends Appender
                 $msg .= $e->getResponse() . "\n";
             }
             // @codeCoverageIgnoreEnd
-            throw new Exception("Error Logging to Splunk: $msg");
+            throw new \ErrorException("Error Logging to Splunk: $msg");
         }
     }
 
