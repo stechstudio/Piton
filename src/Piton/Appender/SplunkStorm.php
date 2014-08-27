@@ -162,7 +162,7 @@ class SplunkStorm extends Appender
      *
      * @param string $message
      * @param array $context
-     * @throws \SebastianBergmann\Exporter\Exception
+     * @throws \ErrorException
      * @internal param \Piton\Common\LoggerLevel $level
      * @internal param $event
      * @return mixed|void
