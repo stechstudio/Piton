@@ -488,6 +488,43 @@ Set the required contexts
 
 
 
+### \Piton\Logger::setAndEnableRequiredMessage()
+
+```
+mixed Piton\Logger::\Piton\Logger::setAndEnableRequiredMessage()(string $message, boolean $contextualizeMessage)
+```
+
+Helper function to more easily set and use a required message.
+
+
+
+* Visibility: **public**
+
+#### Arguments
+
+* $message **string** - &lt;p&gt;The string to prepend to the message prior to contextualizing&lt;/p&gt;
+* $contextualizeMessage **boolean** - &lt;p&gt;Do you want the message tokenized? {MESSAGE}&lt;/p&gt;
+
+
+
+### \Piton\Logger::setAndEnableRequiredContext()
+
+```
+mixed Piton\Logger::\Piton\Logger::setAndEnableRequiredContext()(array $context)
+```
+
+Helper function to more easily set and use a Required Context
+
+
+
+* Visibility: **public**
+
+#### Arguments
+
+* $context **array**
+
+
+
 ### \Piton\Logger::log()
 
 ```
@@ -546,7 +583,7 @@ Set the current log level
 mixed Piton\Logger::\Piton\Logger::setTimezoneId()($timezoneId)
 ```
 
-
+Sets the timezone Identifier
 
 
 
@@ -561,10 +598,10 @@ mixed Piton\Logger::\Piton\Logger::setTimezoneId()($timezoneId)
 ### \Piton\Logger::getTimezone()
 
 ```
-mixed Piton\Logger::\Piton\Logger::getTimezone()()
+\DateTimeZone Piton\Logger::\Piton\Logger::getTimezone()()
 ```
 
-
+Returns the timezone, based on the time zone identifier
 
 
 

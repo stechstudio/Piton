@@ -1,3 +1,4 @@
+#!/usr/bin/env php
 <?php
 use Piton\Logger;
 
@@ -35,6 +36,10 @@ print "\nWhat if I want the loglevel and timestamp after the message tough guy?\
 $logger->contextualizeMessage = TRUE;
 $logger->setRequiredMessage('{MESSAGE} {LOGLEVEL} {TIMESTAMP}');
 runLogMessages('Oh, you mean like this?');
+
+print "\nI have to make three different calls in order to set, enable the required message as well as contextualize the dynamic message?\n";
+$logger->setAndEnableRequiredMessage('{TIMESTAMP} {LOGLEVEL} {MESSAGE} ', TRUE);
+runLogMessages('Nope, just do this.');
 
 print "\nAight Mr. Smarty pants. Why? Seriously, why not just default to timestamp, loglevel, message like everyone else?\n";
 $logger->setRequiredMessage('{TIMESTAMP} app="SimpleConsoleLogging" level="{LOGLEVEL}" file="{file}" line={line} class="{class}" msg="{MESSAGE}" ');

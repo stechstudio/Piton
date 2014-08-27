@@ -2,7 +2,9 @@
 namespace Piton;
 
 
+use Piton\Appender\Console;
 use Piton\Common\LoggerLevel;
+use ReflectionProperty;
 
 class LoggerTest extends \PHPUnit_Framework_TestCase
 {
@@ -235,5 +237,113 @@ class LoggerTest extends \PHPUnit_Framework_TestCase
         $this->logger = new Logger($this->allAppenders);
     }
 
+    public function testAppendRequiredContext(){
+        // Remove all the appenders
+        $this->logger->removeAppender('console');
+        $this->logger->removeAppender('splunk');
+        $this->logger->removeAppender('null');
+
+        // Create a new one
+        $appender = new Console();
+
+        // Remove the console stream and replace it with a memory stream.
+        $streamProp = new ReflectionProperty($appender, 'fp');
+        $memStream = \fopen('php://memory', 'rw');
+        $streamProp->setAccessible(true);
+        $streamProp->setValue($appender, $memStream);
+
+        // now add the new Console, with memory stream
+        $this->logger->addAppender($appender);
+
+        // log something
+        $expected = 'Test Log Message'.PHP_EOL;
+        $this->logger->info($expected, []);
+
+        // see what happened!
+        \fseek($memStream, 0);
+        $actual = \stream_get_contents($memStream);
+        $this->assertEquals(trim(preg_replace('/\s+/', ' ', $expected)), trim(preg_replace('/\s+/', ' ', $actual)));
+        $pos = ftell($memStream);
+
+
+        // log something contextualized with no required message
+        $this->logger->contextualizeMessage = TRUE;
+        $expected = 'Contextualized Message'.PHP_EOL;
+        $this->logger->info($expected, ['anything'=>'something']);
+
+        // see what happened!
+        \fseek($memStream, $pos);
+        $actual = \stream_get_contents($memStream);
+        $this->assertEquals(trim(preg_replace('/\s+/', ' ', $expected)), trim(preg_replace('/\s+/', ' ', $actual)));
+        $pos = ftell($memStream);
+
+        // log something contextualized with a message
+        $this->logger->setRequiredMessage('app="PHPUnitTest" level="{LOGLEVEL}" msg="{MESSAGE}" ');
+        $msg = 'Contextualized and Required Message';
+        $this->logger->info($msg, ['anything'=>'something']);
+        $expected = $msg;
+        // see what happened!
+        \fseek($memStream, $pos);
+        $actual = \stream_get_contents($memStream);
+        $this->assertEquals(trim(preg_replace('/\s+/', ' ', $expected)), trim(preg_replace('/\s+/', ' ', $actual)));
+        $pos = ftell($memStream);
+
+        // log something contextualized with a message, and enable required messages
+        $this->logger->enableRequiredMessage();
+        $msg = 'Contextualized and Required Message';
+        $this->logger->info($msg, ['anything'=>'something']);
+        $expected = 'app="PHPUnitTest" level="INFO" msg="Contextualized and Required Message" ';
+        // see what happened!
+        \fseek($memStream, $pos);
+        $actual = \stream_get_contents($memStream);
+        $this->assertEquals(trim(preg_replace('/\s+/', ' ', $expected)), trim(preg_replace('/\s+/', ' ', $actual)));
+        //$pos = ftell($memStream);
+    }
+
+
+    public function testSetAndEnableRequiredMessage()
+    {
+        // Remove all the appenders
+        $this->logger->removeAppender('console');
+        $this->logger->removeAppender('splunk');
+        $this->logger->removeAppender('null');
+
+        // Create a new one
+        $appender = new Console();
+
+        // Remove the console stream and replace it with a memory stream.
+        $streamProp = new ReflectionProperty($appender, 'fp');
+        $memStream = \fopen('php://memory', 'rw');
+        $streamProp->setAccessible(true);
+        $streamProp->setValue($appender, $memStream);
+
+        // now add the new Console, with memory stream
+        $this->logger->addAppender($appender);
+
+        $this->logger->setAndEnableRequiredMessage('this is a required message');
+
+        // log something
+        $expected = 'Test Log Message' . PHP_EOL;
+        $this->logger->info($expected, []);
+        $expected = 'this is a required message Test Log Message';
+
+        // see what happened!
+        \fseek($memStream, 0);
+        $actual = \stream_get_contents($memStream);
+        $this->assertEquals(trim(preg_replace('/\s+/', ' ', $expected)), trim(preg_replace('/\s+/', ' ', $actual)));
+        $pos = ftell($memStream);
+
+        $this->logger->setAndEnableRequiredMessage('this is a required {MESSAGE}', true);
+        $this->logger->setAndEnableRequiredContext(['some'=>'thing']);
+        // log something
+        $expected = 'Test Log Message' . PHP_EOL;
+        $this->logger->info($expected, []);
+        $expected = 'this is a required Test Log Message';
+
+        // see what happened!
+        \fseek($memStream, $pos);
+        $actual = \stream_get_contents($memStream);
+        $this->assertEquals(trim(preg_replace('/\s+/', ' ', $expected)), trim(preg_replace('/\s+/', ' ', $actual)));
+    }
 }
  

@@ -71,9 +71,10 @@ $allAppenders = [
     ];
 
 $logger = new Logger($allAppenders);
-$logger->contextualizeMessage = TRUE;
 $logger->setLevel('all');
-$logger->setRequiredMessage('{TIMESTAMP} app="SimpleConsoleLogging" level="{LOGLEVEL}" file="{file}" line={line} class="{class}" msg="{MESSAGE}" ');
+$requireMessageFormat = '{TIMESTAMP} app="SimpleConsoleLogging" level="{LOGLEVEL}" file="{file}" line={line} class="{class}" msg="{MESSAGE}" ';
+$logger->setAndEnableRequiredMessage($requireMessageFormat, true);
+
 runLogMessages('Because we log to SplunkStorm, and we PWN our logs!', ['file'=>__FILE__,'class'=>__CLASS__, 'line'=>__LINE__]);
 
 function runLogMessages($message, $context = array()){
