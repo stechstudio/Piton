@@ -334,7 +334,7 @@ class LoggerTest extends \PHPUnit_Framework_TestCase
         $pos = ftell($memStream);
 
         $this->logger->setAndEnableRequiredMessage('this is a required {MESSAGE}', true);
-
+        $this->logger->setAndEnableRequiredContext(['some'=>'thing']);
         // log something
         $expected = 'Test Log Message' . PHP_EOL;
         $this->logger->info($expected, []);
