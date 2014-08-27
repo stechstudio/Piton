@@ -351,6 +351,27 @@ class Logger extends Abstracts\Logger
      */
     public $contextualizeMessage = false;
 
+
+    /**
+     * Helper function to more easily set and use a required message.
+     * @param string $message                      The string to prepend to the message prior to contextualizing
+     * @param bool $contextualizeMessage    Do you want the message tokenized? {MESSAGE}
+     */
+    public function setAndEnableRequiredMessage($message, $contextualizeMessage = FALSE){
+        $this->setRequiredMessage($message);
+        $this->enableRequiredMessage();
+        $this->contextualizeMessage = $contextualizeMessage;
+    }
+
+    /**
+     * Helper function to more easily set and use a Required Context
+     * @param array $context
+     */
+    public function setAndEnableRequiredContext(array $context){
+        $this->enableRequiredContext();
+        $this->setRequiredContext($context);
+    }
+
     /**
      * Public a log message! This is where the magic happens ... or not!
      * @param mixed $level
@@ -371,11 +392,14 @@ class Logger extends Abstracts\Logger
                 return null;
             }
             $origMessage = '';
-            if ($this->contextualizeMessage) {
+
+
+            if ($this->contextualizeMessage && $this->hasRequiredMessage && !empty($this->requiredMessage)) {
                 $origMessage = $message;
                 $message = '';
             }
             $appenderMessage = $this->formatMessage($message);
+
             $appenderContext = $this->mergeContexts($context);
             $appenderContext['LOGLEVEL'] = $level->toString();
             $appenderContext['TIMESTAMP'] = $this->createTimeStamp();
@@ -420,6 +444,10 @@ class Logger extends Abstracts\Logger
         throw new InvalidArgumentException('You must provide a valid LoggerLevel argument.');
     }
 
+    /**
+     * Sets the timezone Identifier
+     * @param $timezoneId
+     */
     public function setTimezoneId($timezoneId)
     {
         if (!is_string($timezoneId)) {
@@ -432,6 +460,10 @@ class Logger extends Abstracts\Logger
         $this->timezoneId = $timezoneId;
     }
 
+    /**
+     * Returns the timezone, based on the time zone identifier
+     * @return \DateTimeZone
+     */
     public function getTimezone()
     {
         return new \DateTimeZone($this->timezoneId);
